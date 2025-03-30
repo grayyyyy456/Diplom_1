@@ -4,12 +4,8 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + "/.."))
 import pytest
 from unittest.mock import Mock
 from burger import Burger
-from database import Database
 
 
-@pytest.fixture
-def burger():
-    return Burger()
 
 @pytest.fixture
 def mock_bun():
@@ -19,10 +15,7 @@ def mock_bun():
     return bun
 
 @pytest.fixture
-def setup_burger(burger, mock_bun):
+def setup_burger(mock_bun):
+    burger = Burger()
     burger.set_buns(mock_bun)
     return burger
-
-@pytest.fixture
-def database():
-    return Database()

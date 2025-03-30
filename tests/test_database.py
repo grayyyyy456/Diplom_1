@@ -1,11 +1,14 @@
 from ingredient_types import INGREDIENT_TYPE_SAUCE, INGREDIENT_TYPE_FILLING
+from database import Database
 
 class TestDatabase:
-    def test_database_initialization(self, database):
+    def test_database_initialization(self):
+        database = Database()
         assert len(database.buns) == 3
         assert len(database.ingredients) == 6
 
-    def test_database_buns(self, database):
+    def test_database_buns(self):
+        database = Database()
         assert database.buns[0].get_name() == "black bun"
         assert database.buns[0].get_price() == 100
         assert database.buns[1].get_name() == "white bun"
@@ -13,7 +16,8 @@ class TestDatabase:
         assert database.buns[2].get_name() == "red bun"
         assert database.buns[2].get_price() == 300
 
-    def test_database_ingredients(self, database):
+    def test_database_ingredients(self):
+        database = Database()
         assert database.ingredients[0].get_type() == INGREDIENT_TYPE_SAUCE
         assert database.ingredients[0].get_name() == "hot sauce"
         assert database.ingredients[0].get_price() == 100
@@ -38,14 +42,16 @@ class TestDatabase:
         assert database.ingredients[5].get_name() == "sausage"
         assert database.ingredients[5].get_price() == 300
 
-    def test_available_buns(self, database):
+    def test_available_buns(self):
+        database = Database()
         buns = database.available_buns()
         assert len(buns) == 3
         assert buns[0].get_name() == "black bun"
         assert buns[1].get_name() == "white bun"
         assert buns[2].get_name() == "red bun"
 
-    def test_available_ingredients(self, database):
+    def test_available_ingredients(self):
+        database = Database()
         ingredients = database.available_ingredients()
         assert len(ingredients) == 6
         assert ingredients[0].get_name() == "hot sauce"
